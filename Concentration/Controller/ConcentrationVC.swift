@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConcentrationVC: UIViewController {
     
     // this var responsible for starting the game
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     private func updateFlipCountLB(){
         let attributes:[NSAttributedStringKey:Any] = [
             .strokeWidth:5.0,
-            .strokeColor:#colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            .strokeColor:#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         ]
         let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
         flibCountLB.attributedText = attributedString
@@ -67,18 +67,18 @@ class ViewController: UIViewController {
             
             if card.isFaceUp, !card.isMatched{
                 button.setTitle(emoji(for: card), for: UIControlState.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             }
             else if card.isFaceUp, card.isMatched{
                 button.setTitle("", for: UIControlState.normal)
                 button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
                 button.isEnabled = false
                 restartGame -= 1
-                print(restartGame)
+                // print(restartGame)
             }else if !card.isFaceUp,!card.isMatched{
                 button.setTitle("", for: UIControlState.normal)
                 //button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-                    button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                    button.backgroundColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
             }
             
             if restartGame == 0{
@@ -89,22 +89,31 @@ class ViewController: UIViewController {
             /*
              if card.isFaceUp{
              button.setTitle(emoji(for: card), for: UIControlState.normal)
-             button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+             button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
              }else{
              button.setTitle("", for: UIControlState.normal)
-             //button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+             button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+ 
              if card.isMatched{
              button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
              button.isEnabled = false
              }else{
              button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
              }
-             }
-             */
+            */
+           }
+            
+        
+    }
+    
+    // default theme
+    var theme:String? {
+        didSet{
+            emojiChoices = theme ?? ""
+            emoji = [:]
+            updateViewFromModel()
         }
     }
-
-    
                     // using array of emojiChoices
     //private var emojiChoices = ["😈","👻","🎃","😱","🦇","🙀","🍎","🚴🏿‍♂️","🏆"]
                     // using String of emojiChoices
