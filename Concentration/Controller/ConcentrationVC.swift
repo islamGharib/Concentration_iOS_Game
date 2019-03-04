@@ -61,49 +61,50 @@ class ConcentrationVC: UIViewController {
     
     // update the cards (view) after each click on the card
     private func updateViewFromModel(){
-        for index in cardButtons.indices{ // .indices mean 0..<cardButtons.count
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            
-            if card.isFaceUp, !card.isMatched{
-                button.setTitle(emoji(for: card), for: UIControlState.normal)
-                button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            }
-            else if card.isFaceUp, card.isMatched{
-                button.setTitle("", for: UIControlState.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-                button.isEnabled = false
-                restartGame -= 1
-                // print(restartGame)
-            }else if !card.isFaceUp,!card.isMatched{
-                button.setTitle("", for: UIControlState.normal)
-                //button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        if cardButtons != nil{
+            for index in cardButtons.indices{ // .indices mean 0..<cardButtons.count
+                let button = cardButtons[index]
+                let card = game.cards[index]
+                
+                if card.isFaceUp, !card.isMatched{
+                    button.setTitle(emoji(for: card), for: UIControlState.normal)
+                    button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                }
+                else if card.isFaceUp, card.isMatched{
+                    button.setTitle("", for: UIControlState.normal)
+                    button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+                    button.isEnabled = false
+                    restartGame -= 1
+                    // print(restartGame)
+                }else if !card.isFaceUp,!card.isMatched{
+                    button.setTitle("", for: UIControlState.normal)
+                    //button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
                     button.backgroundColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+                }
+                
+                if restartGame == 0{
+                    let appDelegate = AppDelegate()
+                    appDelegate.resetApp()
+                }
+                
+                /*
+                 if card.isFaceUp{
+                 button.setTitle(emoji(for: card), for: UIControlState.normal)
+                 button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                 }else{
+                 button.setTitle("", for: UIControlState.normal)
+                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+                 
+                 if card.isMatched{
+                 button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+                 button.isEnabled = false
+                 }else{
+                 button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                 }
+                 */
             }
             
-            if restartGame == 0{
-                let appDelegate = AppDelegate()
-                appDelegate.resetApp()
-            }
-            
-            /*
-             if card.isFaceUp{
-             button.setTitle(emoji(for: card), for: UIControlState.normal)
-             button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-             }else{
-             button.setTitle("", for: UIControlState.normal)
-             button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
- 
-             if card.isMatched{
-             button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-             button.isEnabled = false
-             }else{
-             button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-             }
-            */
-           }
-            
-        
+        }
     }
     
     // default theme
