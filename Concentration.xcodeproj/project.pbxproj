@@ -12,6 +12,7 @@
 		7F17087621CFA9380001CBEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F17087421CFA9380001CBEA /* Main.storyboard */; };
 		7F17087821CFA93A0001CBEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F17087721CFA93A0001CBEA /* Assets.xcassets */; };
 		7F17087B21CFA93A0001CBEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F17087921CFA93A0001CBEA /* LaunchScreen.storyboard */; };
+		7F92792C222BD25D004B8261 /* ConcentrationThemeChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92792B222BD25D004B8261 /* ConcentrationThemeChooserVC.swift */; };
 		7FD6A33A21D0DEB900DC3011 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD6A33921D0DEB900DC3011 /* Concentration.swift */; };
 		7FD6A33C21D0DF1A00DC3011 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD6A33B21D0DF1A00DC3011 /* Card.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 		7F17087721CFA93A0001CBEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F17087A21CFA93A0001CBEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F17087C21CFA93A0001CBEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F92792B222BD25D004B8261 /* ConcentrationThemeChooserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationThemeChooserVC.swift; sourceTree = "<group>"; };
 		7FD6A33921D0DEB900DC3011 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 		7FD6A33B21D0DF1A00DC3011 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				7F17087221CFA9380001CBEA /* ConcentrationVC.swift */,
+				7F92792B222BD25D004B8261 /* ConcentrationThemeChooserVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F92792C222BD25D004B8261 /* ConcentrationThemeChooserVC.swift in Sources */,
 				7F17087321CFA9380001CBEA /* ConcentrationVC.swift in Sources */,
 				7F17087121CFA9380001CBEA /* AppDelegate.swift in Sources */,
 				7FD6A33A21D0DEB900DC3011 /* Concentration.swift in Sources */,
