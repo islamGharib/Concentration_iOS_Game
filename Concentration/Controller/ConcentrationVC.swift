@@ -66,16 +66,38 @@ class ConcentrationVC: UIViewController {
                 let button = cardButtons[index]
                 let card = game.cards[index]
                 
+                // using animation when card is fliped
                 if card.isFaceUp, !card.isMatched{
-                    button.setTitle(emoji(for: card), for: UIControlState.normal)
-                    button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                    UIView.transition(with: button,
+                                      duration: 0.6,
+                                      options: [.transitionFlipFromLeft],
+                                      animations: {
+                                        button.setTitle(self.emoji(for: card), for: UIControlState.normal)
+                                        button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                    })
                 }
                 else if card.isFaceUp, card.isMatched{
-                    button.setTitle("", for: UIControlState.normal)
-                    button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-                    button.isEnabled = false
-                    restartGame -= 1
-                    // print(restartGame)
+                    UIView.transition(with: button,
+                                      duration: 0.6,
+                                      options: [.transitionFlipFromLeft],
+                                      animations: {
+                                        button.setTitle(self.emoji(for: card), for: UIControlState.normal)
+                                        button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                                        button.isEnabled = false
+                                        self.restartGame -= 1
+                                        // print(restartGame)
+                    },
+                    completion:{finished in
+                        UIView.transition(with: button,
+                                          duration: 0.6,
+                                          options: [.transitionFlipFromLeft],
+                                          animations: {
+                                            button.setTitle("", for: UIControlState.normal)
+                                            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+                                            
+                        })
+                    })
+                    
                 }else if !card.isFaceUp,!card.isMatched{
                     button.setTitle("", for: UIControlState.normal)
                     //button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
